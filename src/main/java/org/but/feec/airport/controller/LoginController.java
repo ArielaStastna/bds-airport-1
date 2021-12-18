@@ -15,8 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -36,11 +34,11 @@ public class LoginController {
     @FXML
     public Label passwordLabel;
     @FXML
-    private Button signInButton;
+    private Button login;
     @FXML
-    private TextField usernameTextfield;
+    private TextField usernameField;
     @FXML
-    private PasswordField passwordTextField;
+    private PasswordField passwordField;
 
     private PersonRepository personRepository;
     private AuthService authService;
@@ -52,15 +50,15 @@ public class LoginController {
 
     @FXML
     private void initialize() {
-        GlyphsDude.setIcon(signInButton, FontAwesomeIcon.SIGN_IN, "1em");
+        GlyphsDude.setIcon(login, FontAwesomeIcon.SIGN_IN, "1em");
         GlyphsDude.setIcon(usernameLabel, FontAwesomeIcon.USER, "2em");
         GlyphsDude.setIcon(passwordLabel, FontAwesomeIcon.USER_SECRET, "2em");
-        usernameTextfield.setOnKeyPressed(event -> {//skrátený zápis anonymnej funkcie
+        usernameField.setOnKeyPressed(event -> {//skrátený zápis anonymnej funkcie
             if (event.getCode() == KeyCode.ENTER) {//zavolá sa enterom metóda
                 handleSignIn();
             }
         });
-        passwordTextField.setOnKeyPressed(event -> {
+        passwordField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 handleSignIn();
             }
@@ -74,9 +72,9 @@ public class LoginController {
 
     private void initializeValidations() {
         validation = new ValidationSupport();
-        validation.registerValidator(usernameTextfield, Validator.createEmptyValidator("The username must not be empty."));
-        validation.registerValidator(passwordTextField, Validator.createEmptyValidator("The password must not be empty."));
-        signInButton.disableProperty().bind(validation.invalidProperty());
+        validation.registerValidator(usernameField, Validator.createEmptyValidator("The username must not be empty."));
+        validation.registerValidator(passwordField, Validator.createEmptyValidator("The password must not be empty."));
+        login.disableProperty().bind(validation.invalidProperty());
     }
 
     private void initializeServices() {//voláme logiku controlleru
@@ -89,8 +87,8 @@ public class LoginController {
     } //metóda ktorá mapuje
 
     private void handleSignIn() { //či sedia prihlasovacie údaje
-        String username = usernameTextfield.getText();
-        String password = passwordTextField.getText();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
 
         try {
             boolean authenticated = authService.authenticate(username, password);
@@ -113,10 +111,9 @@ public class LoginController {
             stage.setTitle("BDS Airport App");
             stage.setScene(scene);
 
-            Stage stageOld = (Stage) signInButton.getScene().getWindow();
+            Stage stageOld = (Stage) login.getScene().getWindow();
             stageOld.close();
 
-            stage.getIcons().add(new Image(App.class.getResourceAsStream("logos/vut.jpg")));
             authConfirmDialog();
 
             stage.show();
