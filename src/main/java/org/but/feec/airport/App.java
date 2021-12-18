@@ -1,10 +1,11 @@
 package org.but.feec.airport;
-/
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.but.feec.airport.exceptions.ExceptionHandler;
+
 public class App extends Application {
     private FXMLLoader loader;
     private VBox mainStage;
@@ -24,7 +25,7 @@ public class App extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception ex) {
-           // ExceptionHandler.handleException(ex);
+           ExceptionHandler.handleException(ex);
         }
     }
 
