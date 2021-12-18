@@ -121,7 +121,7 @@ public class LoginController {
 
             stage.show();
         } catch (IOException ex) {
-           // ExceptionHandler.handleException(ex);
+           ExceptionHandler.handleException(ex);
         }
     }
 
