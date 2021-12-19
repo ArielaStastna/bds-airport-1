@@ -6,55 +6,53 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class PersonBasicView {
-    StringProperty name= new SimpleStringProperty();
-    StringProperty surname= new SimpleStringProperty();
-    StringProperty date_of_birth= new SimpleStringProperty();
-    LongProperty passportNumber= new SimpleLongProperty();
-    StringProperty residence= new SimpleStringProperty();
+    StringProperty first_name= new SimpleStringProperty();
+    StringProperty last_name = new SimpleStringProperty();
+    LongProperty passport_number = new SimpleLongProperty();
+    StringProperty country_of_residence = new SimpleStringProperty();
+    StringProperty comments = new SimpleStringProperty();
 
-    public String getName() {
-        return nameProperty().get();
+    public String getFirst_name() {
+        return first_nameProperty().get();
     }
-    public void setName(String name) {
-        this.nameProperty().setValue(name);
+    public void setFirst_name(String first_name) {
+        this.first_nameProperty().setValue(first_name);
     }
-    public String getSurname() {
-        return surnameProperty().get();
+    public String getLast_name() {
+        return last_nameProperty().get();
     }
-    public void setSurname(String surname) {
-        this.surnameProperty().setValue(surname);
+    public void setLast_name(String last_name) {
+        this.last_nameProperty().setValue(last_name);
     }
-    public String getDate_of_birth() {
-        return date_of_birthProperty().get();
+    public long getPassport_number() {
+        return passport_numberProperty().get();
     }
-    public void setDate_of_birth(String date_of_birth) {
-        this.surnameProperty().setValue(date_of_birth);
+    public void setPassport_number(Long passport_number) {
+        this.passport_numberProperty().setValue(passport_number);
     }
-    public Long getPassportNumber() {
-        return passportNumberProperty().get();
+    public String getCountry_of_residence() {
+        return country_of_residenceProperty().get();
     }
-    public void setPassportNumber(Long passportNumber) {
-        this.passportNumberProperty().setValue(passportNumber);
+    public void setCountry_of_residence(String country_of_residence) {this.country_of_residenceProperty().setValue(country_of_residence);}
+    public String getComments() {
+        return commentsProperty().get();
     }
-    public String getResidence() {
-        return residenceProperty().get();
-    }
-    public void setResidence(String residence) {
-        this.residenceProperty().setValue(residence);
+    public void setComments(String comments) {
+        this.last_nameProperty().setValue(comments);
     }
 
-    public StringProperty nameProperty() {
-        return name;
+    public StringProperty first_nameProperty() {
+        return first_name;
     }
-    public StringProperty surnameProperty() {
-        return surname;
+    public StringProperty last_nameProperty() {
+        return last_name;
     }
-    public StringProperty date_of_birthProperty() {
-        return date_of_birth;
+    public LongProperty passport_numberProperty() {
+        return passport_number;
     }
-    public LongProperty passportNumberProperty() {
-        return passportNumber;
+    public StringProperty country_of_residenceProperty() {
+        return country_of_residence;
     }
-    public StringProperty residenceProperty() {
-        return residence;
+    public StringProperty commentsProperty() {
+        return comments;
     }}

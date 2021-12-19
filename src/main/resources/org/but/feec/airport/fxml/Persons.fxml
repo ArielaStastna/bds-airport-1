@@ -9,11 +9,11 @@
          <children>
             <TableView prefHeight="386.0" prefWidth="623.0">
               <columns>
-                <TableColumn fx:id="passengerName" prefWidth="101.80001986026764" text="Name" />
-                <TableColumn fx:id="passengerSurname" prefWidth="108.5999984741211" text="Surname" />
-                  <TableColumn fx:id="DateOfBirth" prefWidth="114.39999389648438" text="Date of birth" />
-                  <TableColumn fx:id="passportNumber" prefWidth="135.4000244140625" text="Passport number" />
-                  <TableColumn fx:id="residence" prefWidth="161.39999389648438" text="Country of residence" />
+                <TableColumn fx:id="passengerName" prefWidth="92.40000915527344" text="Name" />
+                <TableColumn fx:id="passengerSurname" prefWidth="113.19998168945312" text="Surname" />
+                  <TableColumn fx:id="passport_number" prefWidth="130.79998779296875" text="Passport number" />
+                  <TableColumn fx:id="residence" prefWidth="130.0" text="Country of residence" />
+                  <TableColumn fx:id="comments" prefWidth="157.20001220703125" text="Security check comments" />
               </columns>
             </TableView>
             <Button fx:id="addPassengerButton" layoutX="21.0" layoutY="398.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Add passenger" />
