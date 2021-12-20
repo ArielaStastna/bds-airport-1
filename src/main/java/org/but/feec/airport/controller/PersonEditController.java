@@ -82,7 +82,6 @@ public class PersonEditController {
 
     @FXML
     public void handleEditPersonButton(ActionEvent event) {
-        // can be written easier, its just for better explanation here on so many lines
         Long passport_number = Long.valueOf(passportTextField.getText());
         String last_name = surnameTextField.getText();
         String first_name = nameTextField.getText();
