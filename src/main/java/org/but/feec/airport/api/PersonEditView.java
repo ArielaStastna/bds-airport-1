@@ -3,12 +3,19 @@ package org.but.feec.airport.api;
 
 
 public class PersonEditView {
+    private Long id;
     private String first_name;
     private String last_name;
-    private Long passport_number;
+    private String passport_number;
     private String country_of_residence;
-    private String comments;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getFirst_name() {
             return first_name;
         }
@@ -17,21 +24,18 @@ public class PersonEditView {
             return last_name;
         }
         public void setLast_name(String last_name) {this.last_name=last_name;}
-    public long getPassport_number() {return passport_number;}
-    public void setPassport_number(long passport_number) {this.passport_number=passport_number;}
+    public String getPassport_number() {return passport_number;}
+    public void setPassport_number(String passport_number) {this.passport_number=passport_number;}
     public String getCountry_of_residence() {return country_of_residence;}
     public void setCountry_of_residence(String country_of_residence) {this.country_of_residence=country_of_residence;}
-    public String getComments() {
-        return comments;
-    }
-    public void setComments(String comments) {this.comments=comments;}
+
     @Override
     public String toString() {
         return "PersonCreateView{" +
                 "first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", country_of_residence='" + country_of_residence + '\'' +
-                ", comments='" + comments + '\''+
+                 '\''+
                 '}';
     }
 }

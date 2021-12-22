@@ -9,7 +9,7 @@ public class PersonBasicView {
     private LongProperty id = new SimpleLongProperty();
     StringProperty first_name= new SimpleStringProperty();
     StringProperty last_name = new SimpleStringProperty();
-    LongProperty passport_number = new SimpleLongProperty();
+    StringProperty passport_number = new SimpleStringProperty();
     StringProperty country_of_residence = new SimpleStringProperty();
 
     public Long getId() {
@@ -31,10 +31,10 @@ public class PersonBasicView {
     public void setLast_name(String last_name) {
         this.last_nameProperty().setValue(last_name);
     }
-    public long getPassport_number() {
+    public String getPassport_number() {
         return passport_numberProperty().get();
     }
-    public void setPassport_number(Long passport_number) {
+    public void setPassport_number(String passport_number) {
         this.passport_numberProperty().setValue(passport_number);
     }
     public String getCountry_of_residence() {
@@ -51,7 +51,7 @@ public class PersonBasicView {
     public StringProperty last_nameProperty() {
         return last_name;
     }
-    public LongProperty passport_numberProperty() {
+    public StringProperty passport_numberProperty() {
         return passport_number;
     }
     public StringProperty country_of_residenceProperty() {

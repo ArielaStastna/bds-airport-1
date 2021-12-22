@@ -26,15 +26,18 @@ public class PersonCreateController {
     @FXML
     public Button createButton;
     @FXML
+    private TextField newUsername;
+    @FXML
     private TextField newName;
 
     @FXML
     private TextField newSurname;
 
-
     @FXML
     private TextField newCertificate;
 
+    @FXML
+    private TextField newPassword;
 
     private PersonService personService;
     private PersonRepository personRepository;
@@ -46,10 +49,11 @@ public class PersonCreateController {
         personService = new PersonService(personRepository);
 
         validation = new ValidationSupport();
+        validation.registerValidator(newUsername, Validator.createEmptyValidator("The email must not be empty."));
         validation.registerValidator(newName, Validator.createEmptyValidator("The email must not be empty."));
         validation.registerValidator(newSurname, Validator.createEmptyValidator("The first name must not be empty."));
         validation.registerValidator(newCertificate, Validator.createEmptyValidator("The nickname must not be empty."));
-
+        validation.registerValidator(newPassword, Validator.createEmptyValidator("The password must not be empty."));
 
         createButton.disableProperty().bind(validation.invalidProperty());
 
@@ -58,15 +62,19 @@ public class PersonCreateController {
 
     @FXML
     void handleCreateNewPerson(ActionEvent event) {
+        String password = newPassword.getText();
         String first_name = newName.getText();
         String last_name = newSurname.getText();
         String valid = newCertificate.getText();
+        String username = newUsername.getText();
 
 
         PersonCreateView personCreateView = new PersonCreateView();
+        personCreateView.setPassword(password.toCharArray());
         personCreateView.setFirst_name(first_name);
         personCreateView.setLast_name(last_name);
         personCreateView.setValid(valid);
+        personCreateView.setUsername(username);
 
 
         personService.createPerson(personCreateView);

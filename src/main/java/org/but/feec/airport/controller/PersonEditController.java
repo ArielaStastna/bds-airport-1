@@ -35,7 +35,7 @@ public class PersonEditController {
     @FXML
     private TextField residenceTextField;
     @FXML
-    private TextField securityTextField;
+    private TextField idTextField;
 
     private PersonService personService;
     private PersonRepository personRepository;
@@ -56,7 +56,7 @@ public class PersonEditController {
         validation.registerValidator(surnameTextField, Validator.createEmptyValidator("Cell surname must not be empty."));
         validation.registerValidator(passportTextField, Validator.createEmptyValidator("Cell passport number must not be empty."));
         validation.registerValidator(residenceTextField, Validator.createEmptyValidator("Cell country of residence must not be empty."));
-        validation.registerValidator(securityTextField, Validator.createEmptyValidator("Cell security check comments must not be empty."));
+        validation.registerValidator(idTextField, Validator.createEmptyValidator("Cell id must not be empty."));
 
         editButton.disableProperty().bind(validation.invalidProperty());
 
@@ -72,7 +72,8 @@ public class PersonEditController {
         Stage stage = this.stage;
         if (stage.getUserData() instanceof PersonBasicView) {
             PersonBasicView personBasicView = (PersonBasicView) stage.getUserData();
-            passportTextField.setText(String.valueOf(personBasicView.getPassport_number()));
+            passportTextField.setText(personBasicView.getPassport_number());
+            idTextField.setText(String.valueOf(personBasicView.getId()));
             surnameTextField.setText(personBasicView.getLast_name());
             nameTextField.setText(personBasicView.getFirst_name());
             residenceTextField.setText(personBasicView.getCountry_of_residence());
@@ -82,18 +83,19 @@ public class PersonEditController {
 
     @FXML
     public void handleEditPersonButton(ActionEvent event) {
-        Long passport_number = Long.valueOf(passportTextField.getText());
+        String passport_number = passportTextField.getText();
         String last_name = surnameTextField.getText();
         String first_name = nameTextField.getText();
         String country_of_residence = residenceTextField.getText();
-        String comments = securityTextField.getText();
+        Long id = Long.valueOf(idTextField.getText());
 
         PersonEditView personEditView = new PersonEditView();
+        personEditView.setId(id);
         personEditView.setPassport_number(passport_number);
         personEditView.setCountry_of_residence(country_of_residence);
         personEditView.setFirst_name(first_name);
         personEditView.setLast_name(last_name);
-        personEditView.setComments(comments);
+
 
         personService.editPerson(personEditView);
 

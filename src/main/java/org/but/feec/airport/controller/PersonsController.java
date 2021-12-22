@@ -35,7 +35,7 @@ public class PersonsController
     @FXML
     private TableColumn<PersonBasicView, String> passengerSurname;
     @FXML
-    private TableColumn<PersonBasicView, Long> passport_number;
+    private TableColumn<PersonBasicView, String> passport_number;
     @FXML
     private TableColumn<PersonBasicView, String> residence;
     @FXML
@@ -55,7 +55,7 @@ public class PersonsController
         passenger_id.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("id"));
         passengerName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("first_name"));
         passengerSurname.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("last_name"));
-        passport_number.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("passport_number"));
+        passport_number.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("passport_number"));
         residence.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("country_of_residence"));
 
 
@@ -100,7 +100,7 @@ public class PersonsController
             PersonBasicView personView = systemPassengerTableView.getSelectionModel().getSelectedItem();
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(App.class.getResource("fxml/PersonsDetailView.fxml"));
+                fxmlLoader.setLocation(App.class.getResource("fxml/PersonDetail.fxml"));
                 Stage stage = new Stage();
 
                 Long personId = personView.getId();
@@ -109,7 +109,7 @@ public class PersonsController
                 stage.setUserData(personDetailView);
                 stage.setTitle("BDS JavaFX Passenger Detailed View");
 
-                PersonsDetailViewController controller = new PersonsDetailViewController();
+                PersonDetailController controller = new PersonDetailController();
                 controller.setStage(stage);
                 fxmlLoader.setController(controller);
 
@@ -141,10 +141,10 @@ public class PersonsController
         System.exit(0);
     }
 
-    public void handleAddPersonButton(ActionEvent actionEvent) {
+    public void handleAddPassenger(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(App.class.getResource("fxml/PersonsCreate.fxml"));
+            fxmlLoader.setLocation(App.class.getResource("fxml/PersonCreate.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 500);
             Stage stage = new Stage();
             stage.setTitle("BDS JavaFX Create Passenger");
@@ -164,5 +164,4 @@ public class PersonsController
         systemPassengerTableView.refresh();
         systemPassengerTableView.sort();
     }
-}
 }
