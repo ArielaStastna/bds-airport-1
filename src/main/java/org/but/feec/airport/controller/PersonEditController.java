@@ -76,7 +76,7 @@ public class PersonEditController {
             surnameTextField.setText(personBasicView.getLast_name());
             nameTextField.setText(personBasicView.getFirst_name());
             residenceTextField.setText(personBasicView.getCountry_of_residence());
-            securityTextField.setText(personBasicView.getComments());
+
         }
     }
 

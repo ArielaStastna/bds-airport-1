@@ -29,9 +29,10 @@ public class PersonRepository {
         return null;
     }
     private PersonAuthView mapToPersonAuth(ResultSet rs) throws SQLException {
-        PersonAuthView person = new PersonAuthView();
-        person.setUsername(rs.getString("username"));
-        person.setPassword(rs.getString("password"));
-        return person;
-    }
-}
+       PersonAuthView person = new PersonAuthView();
+       person.setUsername(rs.getString("username"));
+       person.setPassword(rs.getString("password"));
+       return person;
+    }    }
+
+

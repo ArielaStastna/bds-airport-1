@@ -7,13 +7,13 @@
    <content>
       <AnchorPane prefHeight="398.0" prefWidth="598.0">
          <children>
-            <TableView prefHeight="386.0" prefWidth="623.0">
+            <TableView fx:id="systemPassengerTableView" prefHeight="386.0" prefWidth="623.0">
               <columns>
-                <TableColumn fx:id="passengerName" prefWidth="92.40000915527344" text="Name" />
-                <TableColumn fx:id="passengerSurname" prefWidth="113.19998168945312" text="Surname" />
-                  <TableColumn fx:id="passport_number" prefWidth="130.79998779296875" text="Passport number" />
-                  <TableColumn fx:id="residence" prefWidth="130.0" text="Country of residence" />
-                  <TableColumn fx:id="comments" prefWidth="157.20001220703125" text="Security check comments" />
+                  <TableColumn fx:id="passenger_id" prefWidth="99.40000915527344" text="Passenger ID" />
+                  <TableColumn fx:id="passengerName" prefWidth="114.0" text="Name" />
+                  <TableColumn fx:id="passengerSurname" prefWidth="112.5999755859375" text="Surname" />
+                  <TableColumn fx:id="passport_number" prefWidth="140.4000244140625" text="Passport number" />
+                  <TableColumn fx:id="residence" prefWidth="154.79998779296875" text="Country of residence" />
               </columns>
             </TableView>
             <Button fx:id="addPassengerButton" layoutX="21.0" layoutY="398.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Add passenger" />

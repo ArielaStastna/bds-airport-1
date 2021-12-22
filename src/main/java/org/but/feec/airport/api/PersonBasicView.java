@@ -6,12 +6,19 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class PersonBasicView {
+    private LongProperty id = new SimpleLongProperty();
     StringProperty first_name= new SimpleStringProperty();
     StringProperty last_name = new SimpleStringProperty();
     LongProperty passport_number = new SimpleLongProperty();
     StringProperty country_of_residence = new SimpleStringProperty();
-    StringProperty comments = new SimpleStringProperty();
 
+    public Long getId() {
+        return idProperty().get();
+    }
+
+    public void setId(Long id) {
+        this.idProperty().setValue(id);
+    }
     public String getFirst_name() {
         return first_nameProperty().get();
     }
@@ -34,13 +41,10 @@ public class PersonBasicView {
         return country_of_residenceProperty().get();
     }
     public void setCountry_of_residence(String country_of_residence) {this.country_of_residenceProperty().setValue(country_of_residence);}
-    public String getComments() {
-        return commentsProperty().get();
-    }
-    public void setComments(String comments) {
-        this.last_nameProperty().setValue(comments);
-    }
 
+    public LongProperty idProperty() {
+        return id;
+    }
     public StringProperty first_nameProperty() {
         return first_name;
     }
@@ -52,7 +56,4 @@ public class PersonBasicView {
     }
     public StringProperty country_of_residenceProperty() {
         return country_of_residence;
-    }
-    public StringProperty commentsProperty() {
-        return comments;
     }}
