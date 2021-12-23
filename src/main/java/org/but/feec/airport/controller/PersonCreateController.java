@@ -1,5 +1,4 @@
 package org.but.feec.airport.controller;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -25,8 +24,7 @@ public class PersonCreateController {
 
     @FXML
     public Button createButton;
-    @FXML
-    private TextField newUsername;
+
     @FXML
     private TextField newName;
 
@@ -34,10 +32,9 @@ public class PersonCreateController {
     private TextField newSurname;
 
     @FXML
-    private TextField newCheck;
+    private TextField newPassport;
 
-    @FXML
-    private TextField newPassword;
+
 
     private PersonService personService;
     private PersonRepository personRepository;
@@ -49,11 +46,11 @@ public class PersonCreateController {
         personService = new PersonService(personRepository);
 
         validation = new ValidationSupport();
-        validation.registerValidator(newUsername, Validator.createEmptyValidator("The email must not be empty."));
-        validation.registerValidator(newName, Validator.createEmptyValidator("The email must not be empty."));
-        validation.registerValidator(newSurname, Validator.createEmptyValidator("The first name must not be empty."));
-        validation.registerValidator(newCheck, Validator.createEmptyValidator("The nickname must not be empty."));
-        validation.registerValidator(newPassword, Validator.createEmptyValidator("The password must not be empty."));
+
+        validation.registerValidator(newName, Validator.createEmptyValidator("Cell name must not be empty."));
+        validation.registerValidator(newSurname, Validator.createEmptyValidator("Cell surname must not be empty."));
+        validation.registerValidator(newPassport, Validator.createEmptyValidator("Cell passport number must not be empty."));
+
 
         createButton.disableProperty().bind(validation.invalidProperty());
 
@@ -62,19 +59,19 @@ public class PersonCreateController {
 
     @FXML
     void handleCreateNewPerson(ActionEvent event) {
-        String password = newPassword.getText();
+
         String first_name = newName.getText();
         String last_name = newSurname.getText();
-        String check_results = newCheck.getText();
-        String username = newUsername.getText();
+        String passport_number = newPassport.getText();
+
 
 
         PersonCreateView personCreateView = new PersonCreateView();
-        personCreateView.setPassword(password.toCharArray());
+
         personCreateView.setFirst_name(first_name);
         personCreateView.setLast_name(last_name);
-        personCreateView.setCheck_results(check_results);
-        personCreateView.setUsername(username);
+        personCreateView.setPassport_number(passport_number);
+
 
 
         personService.createPerson(personCreateView);
