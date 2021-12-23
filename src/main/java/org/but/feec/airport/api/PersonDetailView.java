@@ -12,7 +12,7 @@ public class PersonDetailView {
     private StringProperty passport_number = new SimpleStringProperty();
     private StringProperty country_of_residence = new SimpleStringProperty();
     private StringProperty country_of_citizenship = new SimpleStringProperty();
-    private StringProperty valid = new SimpleStringProperty();
+    private StringProperty check_results = new SimpleStringProperty();
 
     public Long getId() {
         return idProperty().get();
@@ -59,12 +59,12 @@ public class PersonDetailView {
         this.country_of_citizenshipProperty().setValue(country_of_citizenship);
     }
 
-    public String getValid() {
-        return validProperty().get();
+    public String getCheck_results() {
+        return check_resultsProperty().get();
     }
 
-    public void setValid(String valid) {
-        this.validProperty().setValue(valid);
+    public void setCheck_results(String check_results) {
+        this.check_resultsProperty().setValue(check_results);
     }
 
 
@@ -92,8 +92,8 @@ public class PersonDetailView {
         return country_of_citizenship;
     }
 
-    public StringProperty validProperty() {
-        return valid;
+    public StringProperty check_resultsProperty() {
+        return check_results;
     }
 
 

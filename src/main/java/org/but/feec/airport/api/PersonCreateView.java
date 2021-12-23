@@ -5,7 +5,7 @@ public class PersonCreateView {
         private String username;
         private String first_name;
         private String last_name;
-        private String valid;
+        private String check_results;
         char [] password;
     public String getUsername() {
         return username;
@@ -21,8 +21,8 @@ public class PersonCreateView {
         public String getLast_name() {
             return last_name;}
         public void setLast_name(String last_name) {this.last_name=last_name;}
-        public String getValid() {return valid;}
-        public void setValid(String valid) {this.valid=valid;}
+        public String getCheck_results() {return check_results;}
+        public void setCheck_results(String check_results) {this.check_results=check_results;}
     public char[] getPassword() {
         return password;
     }
@@ -37,7 +37,7 @@ public class PersonCreateView {
                     "username='" + username + '\'' +
                     ", first_name='" + first_name + '\'' +
                     ", last_name='" + last_name + '\'' +
-                    ", valid='" + valid + '\'' +
+                    ", check_results='" + check_results + '\'' +
                     ", password=" + Arrays.toString(password) +
                     '}';
         }

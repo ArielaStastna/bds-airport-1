@@ -14,7 +14,7 @@ public class PersonRepository {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT username, password" +
-                             " FROM passenger" +
+                             " FROM security_staff" +
                              " WHERE username = ?")
         ) {
             preparedStatement.setString(1, username);
@@ -37,9 +37,9 @@ public class PersonRepository {
     public PersonDetailView findPersonDetailedView(Long personId) {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, first_name, last_name, passport_number, country_of_residence, country_of_citizenship, valid" +
+                     "SELECT id, first_name, last_name, passport_number, country_of_residence, country_of_citizenship, check_results" +
                              " FROM passenger p" +
-                             " LEFT JOIN covid_certificate c ON p.id = c.passenger_id" +
+                             " LEFT JOIN security_check s ON p.id = c.passenger_id" +
                              " WHERE p.id = ?")
         ) {
             preparedStatement.setLong(1, personId);
@@ -54,11 +54,6 @@ public class PersonRepository {
         return null;
     }
 
-    /**
-     * What will happen if we do not use LEFT JOIN? What persons will be returned? Ask your self and repeat JOIN from the presentations
-     *
-     * @return list of persons
-     */
     public List<PersonBasicView> getPersonBasicView() {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -75,14 +70,14 @@ public class PersonRepository {
         }
     }
         public void createPerson(PersonCreateView personCreateView) {
-        String insertPersonSQL = "INSERT INTO bds.person (first_name, last_name, covid_certificate) VALUES (?,?,?)";
+        String insertPersonSQL = "INSERT INTO bds.person (first_name, last_name, check_results) VALUES (?,?,?)";
         try (Connection connection = DataSourceConfig.getConnection();
              // would be beneficial if I will return the created entity back
              PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSQL, Statement.RETURN_GENERATED_KEYS)) {
             // set prepared statement variables
             preparedStatement.setString(1, personCreateView.getFirst_name());
             preparedStatement.setString(2, personCreateView.getLast_name());
-            preparedStatement.setString(3, personCreateView.getValid());
+            preparedStatement.setString(3, personCreateView.getCheck_results());
 
             int affectedRows = preparedStatement.executeUpdate();
 
@@ -151,7 +146,7 @@ public class PersonRepository {
         personDetailView.setPassport_number(rs.getString("passport_number"));
         personDetailView.setCountry_of_residence(rs.getString("country_of_residence"));
         personDetailView.setCountry_of_citizenship(rs.getString("country_of_citizenship"));
-        personDetailView.setValid(rs.getString("valid"));
+        personDetailView.setCheck_results(rs.getString("check_results"));
         return personDetailView;
     }
 

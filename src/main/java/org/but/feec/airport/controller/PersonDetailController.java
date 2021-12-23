@@ -29,7 +29,7 @@ public class PersonDetailController {
     private TextField citizenshipTextField;
 
     @FXML
-    private TextField certificateTextField;
+    private TextField checkTextField;
 
     // used to reference the stage and to get passed data through it
     public Stage stage;
@@ -46,7 +46,7 @@ public class PersonDetailController {
         passportTextField.setEditable(false);
         residenceTextField.setEditable(false);
         citizenshipTextField.setEditable(false);
-        certificateTextField.setEditable(false);
+        checkTextField.setEditable(false);
 
 
         loadPersonsData();
@@ -64,7 +64,7 @@ public class PersonDetailController {
             passportTextField.setText(personBasicView.getPassport_number());
             residenceTextField.setText(personBasicView.getCountry_of_residence());
             citizenshipTextField.setText(personBasicView.getCountry_of_citizenship());
-            certificateTextField.setText(personBasicView.getValid());
+            checkTextField.setText(personBasicView.getCheck_results());
         }
     }
 }
