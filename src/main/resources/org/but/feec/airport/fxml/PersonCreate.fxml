@@ -20,10 +20,10 @@
             <children>
                 <Label prefHeight="31.0" prefWidth="145.0" text="Name:" GridPane.halignment="RIGHT" />
                 <Label prefHeight="28.0" prefWidth="146.0" text="Surname:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                <Label prefHeight="25.0" prefWidth="154.0" text="Covid certificate valid:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-                <TextField fx:id="newNameTextField" promptText="Enter name" GridPane.columnIndex="1" />
-                <TextField fx:id="newSrnameTextField" promptText="Enter surname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextField fx:id="newCertificateTextField" promptText="Valid/non-valid" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label prefHeight="25.0" prefWidth="154.0" text="Security check results" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                <TextField fx:id="newName" promptText="Enter name" GridPane.columnIndex="1" />
+                <TextField fx:id="newSurname" promptText="Enter surname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="newCheck" promptText="Valid/non-valid" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="newUsername" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="newPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label prefHeight="23.0" prefWidth="150.0" text="Username" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />

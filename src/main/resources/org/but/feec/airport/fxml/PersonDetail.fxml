@@ -30,7 +30,7 @@
                 <TextField fx:id="residenceTextField" promptText="Enter country of residence" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label prefHeight="23.0" prefWidth="147.0" text="Covid certifictate valid:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
             <TextField fx:id="citizenshipTextField" promptText="Enter country of citizenship" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="certificateTextField" promptText="Valid/non-valid" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="checkTextField" promptText="Valid/non-valid" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label prefHeight="27.0" prefWidth="145.0" text="Country of citizenship:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <TextField fx:id="idTextField" promptText="Enter ID" GridPane.columnIndex="1" />
             <Label prefHeight="27.0" prefWidth="146.0" text="Passenger ID:" GridPane.halignment="RIGHT" />
