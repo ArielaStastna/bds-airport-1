@@ -24,20 +24,21 @@ public class PersonService {
         return personRepository.getPersonBasicView();
     }
 
-    public void createPerson(PersonCreateView personCreateView) {
-        char[] originalPassword = personCreateView.getPassword();
-        char[] hashedPassword = hashPassword(originalPassword);
-        personCreateView.setPassword(hashedPassword);
 
-        personRepository.createPerson(personCreateView);
-    }
-    public void editPerson(PersonEditView personEditView) {
-        personRepository.editPerson(personEditView);
-    }
-    private char[] hashPassword(char[] password) {
-        return BCrypt.withDefaults().hashToChar(12, password);
-    }
+        public void createPerson(PersonCreateView personCreateView) {
+            char[] originalPassword = personCreateView.getPassword();
+            char[] hashedPassword = hashPassword(originalPassword);
+            personCreateView.setPassword(hashedPassword);
 
-}
+            personRepository.createPerson(personCreateView);
+        }
+        public void editPerson(PersonEditView personEditView) {
+            personRepository.editPerson(personEditView);
+        }
+        private char[] hashPassword(char[] password) {
+            return BCrypt.withDefaults().hashToChar(12, password);
+        }
+
+    }
 
 

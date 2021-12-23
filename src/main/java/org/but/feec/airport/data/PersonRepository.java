@@ -77,7 +77,7 @@ public class PersonRepository {
             // set prepared statement variables
             preparedStatement.setString(1, personCreateView.getFirst_name());
             preparedStatement.setString(2, personCreateView.getLast_name());
-            preparedStatement.setString(3, personCreateView.getPassport_number());
+            preparedStatement.setString(3, personCreateView.getSecurity_check());
 
             int affectedRows = preparedStatement.executeUpdate();
 

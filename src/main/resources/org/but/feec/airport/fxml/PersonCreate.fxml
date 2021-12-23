@@ -18,10 +18,10 @@
             <children>
                 <Label prefHeight="31.0" prefWidth="145.0" text="Name:" GridPane.halignment="RIGHT" />
                 <Label prefHeight="28.0" prefWidth="146.0" text="Surname:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                <Label prefHeight="25.0" prefWidth="154.0" text="Passport number:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                <Label prefHeight="26.0" prefWidth="149.0" text="Security check results:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                 <TextField fx:id="newName" promptText="Enter name" GridPane.columnIndex="1" />
                 <TextField fx:id="newSurname" promptText="Enter surname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextField fx:id="newPassport" promptText="Enter passport number" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="newCheck" promptText="Enter security check results" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
         </GridPane>
         <Button fx:id="createButton" layoutX="493.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" text="Create" />
