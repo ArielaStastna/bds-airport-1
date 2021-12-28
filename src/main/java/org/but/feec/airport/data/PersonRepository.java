@@ -38,7 +38,7 @@ public class PersonRepository {
     public PersonDetailView findPersonDetailedView(Long personId) {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, first_name, last_name, passport_number, country_of_residence, country_of_citizenship, check_results" +
+                     "SELECT p.id, p.first_name, p.last_name, p.passport_number, p.country_of_residence, p.country_of_citizenship, s.check_results" +
                              " FROM passenger p" +
                              " LEFT JOIN security_check s ON p.id = s.passenger_id" +
                              " WHERE p.id = ?")
@@ -141,7 +141,7 @@ public class PersonRepository {
 
     private PersonDetailView mapToPersonDetailView(ResultSet rs) throws SQLException {
         PersonDetailView personDetailView = new PersonDetailView();
-        personDetailView.setId(rs.getLong("id"));
+        personDetailView.setPassenger_id(rs.getLong("id"));
         personDetailView.setFirst_name(rs.getString("first_name"));
         personDetailView.setLast_name(rs.getString("last_name"));
         personDetailView.setPassport_number(rs.getString("passport_number"));

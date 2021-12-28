@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class PersonDetailView {
-    private LongProperty id = new SimpleLongProperty();
+    private LongProperty passenger_id = new SimpleLongProperty();
     private StringProperty first_name = new SimpleStringProperty();
     private StringProperty last_name = new SimpleStringProperty();
     private StringProperty passport_number = new SimpleStringProperty();
@@ -14,12 +14,12 @@ public class PersonDetailView {
     private StringProperty country_of_citizenship = new SimpleStringProperty();
     private StringProperty check_results = new SimpleStringProperty();
 
-    public Long getId() {
-        return idProperty().get();
+    public Long getPassenger_id() {
+        return passenger_idProperty().get();
     }
 
-    public void setId(Long id) {
-        this.idProperty().setValue(id);
+    public void setPassenger_id(Long id) {
+        this.passenger_idProperty().setValue(id);
     }
 
     public String getFirst_name() {
@@ -68,8 +68,8 @@ public class PersonDetailView {
     }
 
 
-    public LongProperty idProperty() {
-        return id;
+    public LongProperty passenger_idProperty() {
+        return passenger_id;
     }
 
     public StringProperty first_nameProperty() {

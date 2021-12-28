@@ -58,7 +58,7 @@ public class PersonDetailController {
         Stage stage = this.stage;
         if (stage.getUserData() instanceof PersonDetailView) {
             PersonDetailView personBasicView = (PersonDetailView) stage.getUserData();
-            idTextField.setText(String.valueOf(personBasicView.getId()));
+            idTextField.setText(String.valueOf(personBasicView.getPassenger_id()));
             nameTextField.setText(personBasicView.getFirst_name());
             surnameTextField.setText(personBasicView.getLast_name());
             passportTextField.setText(personBasicView.getPassport_number());
