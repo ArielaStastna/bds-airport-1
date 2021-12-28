@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.but.feec.airport.App;
 import org.but.feec.airport.api.PersonBasicView;
 import org.but.feec.airport.api.PersonDetailView;
+import org.but.feec.airport.config.DataSourceConfig;
 import org.but.feec.airport.data.PersonRepository;
 import org.but.feec.airport.exceptions.ExceptionHandler;
 import org.but.feec.airport.service.PersonService;
@@ -19,10 +20,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-public class PersonsController
-{ private static final Logger logger = LoggerFactory.getLogger(PersonsController.class);
+public class PersonsController{
+
 
     @FXML
     public Button addPassengerButton;
@@ -44,13 +46,12 @@ public class PersonsController
     private PersonService personService;
     private PersonRepository personRepository;
 
-    public PersonsController() {
-    }
+    private static final Logger logger = LoggerFactory.getLogger(PersonsController.class);
 
     @FXML
     private void initialize() {
         personRepository = new PersonRepository();
-        personService = new PersonService(personRepository);
+        //personService = new PersonService(personRepository);
 
         passenger_id.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("id"));
         passengerName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("first_name"));
@@ -80,7 +81,7 @@ public class PersonsController
                 fxmlLoader.setLocation(App.class.getResource("fxml/PersonEdit.fxml"));
                 Stage stage = new Stage();
                 stage.setUserData(personView);
-                stage.setTitle("BDS JavaFX Edit Passenger");
+                stage.setTitle("BDS Edit Passenger");
 
                 PersonEditController controller = new PersonEditController();
                 controller.setStage(stage);
@@ -107,7 +108,7 @@ public class PersonsController
                 PersonDetailView personDetailView = personService.getPersonDetailView(personId);
 
                 stage.setUserData(personDetailView);
-                stage.setTitle("BDS JavaFX Passenger Detailed View");
+                stage.setTitle("BDS Passenger Detailed View");
 
                 PersonDetailController controller = new PersonDetailController();
                 controller.setStage(stage);
@@ -141,13 +142,13 @@ public class PersonsController
         System.exit(0);
     }
 
-    public void handleAddPassenger(ActionEvent actionEvent) {
+    public void handleAddPassengerButton(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(App.class.getResource("fxml/PersonCreate.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 500);
             Stage stage = new Stage();
-            stage.setTitle("BDS JavaFX Create Passenger");
+            stage.setTitle("BDS Create Passenger");
             stage.setScene(scene);
 
 
@@ -158,7 +159,9 @@ public class PersonsController
         }
     }
 
-    public void handleRefreshButton(ActionEvent actionEvent) {
+    public void handleRefreshButton(ActionEvent actionEvent) throws SQLException {
+        logger.info("Database refreshed!");
+        DataSourceConfig.getConnection();
         ObservableList<PersonBasicView> observablePersonsList = initializePersonsData();
         systemPassengerTableView.setItems(observablePersonsList);
         systemPassengerTableView.refresh();

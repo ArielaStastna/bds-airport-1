@@ -3,7 +3,8 @@ package org.but.feec.airport.data;
 import org.but.feec.airport.api.*;
 import org.but.feec.airport.config.DataSourceConfig;
 import org.but.feec.airport.exceptions.DataAccessException;
-
+/**PreparedStatement is parametrized and reusable SQL query which forces the developer to write the SQL command and user-provided
+data separately. The SQL query is then provided safely without risk of SQL injection.**/
 import java.sql.PreparedStatement;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class PersonRepository {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT username, password" +
-                             " FROM security_staff" +
-                             " WHERE username = ?")
+                             " FROM security_staff s" +
+                             " WHERE s.username = ?")
         ) {
             preparedStatement.setString(1, username);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -39,7 +40,7 @@ public class PersonRepository {
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT id, first_name, last_name, passport_number, country_of_residence, country_of_citizenship, check_results" +
                              " FROM passenger p" +
-                             " LEFT JOIN security_check s ON p.id = c.passenger_id" +
+                             " LEFT JOIN security_check s ON p.id = s.passenger_id" +
                              " WHERE p.id = ?")
         ) {
             preparedStatement.setLong(1, personId);
@@ -57,8 +58,8 @@ public class PersonRepository {
     public List<PersonBasicView> getPersonBasicView() {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, first_name, last_name, passport_number, country_of_residence" +
-                             " FROM passenger");
+                     "SELECT id, first_name, last_name, passport_number, country_of_residence " +
+                             "FROM passenger");
              ResultSet resultSet = preparedStatement.executeQuery();) {
             List<PersonBasicView> personBasicViews = new ArrayList<>();
             while (resultSet.next()) {
@@ -70,7 +71,7 @@ public class PersonRepository {
         }
     }
         public void createPerson(PersonCreateView personCreateView) {
-        String insertPersonSQL = "INSERT INTO bds.person (first_name, last_name, check_results) VALUES (?,?,?)";
+        String insertPersonSQL = "INSERT INTO public.passenger (first_name, last_name, check_results) VALUES (?,?,?)";
         try (Connection connection = DataSourceConfig.getConnection();
              // would be beneficial if I will return the created entity back
              PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSQL, Statement.RETURN_GENERATED_KEYS)) {
