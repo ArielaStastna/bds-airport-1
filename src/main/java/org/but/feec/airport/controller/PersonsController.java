@@ -51,7 +51,7 @@ public class PersonsController{
     @FXML
     private void initialize() {
         personRepository = new PersonRepository();
-        //personService = new PersonService(personRepository);
+        personService = new PersonService(personRepository);
 
         passenger_id.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("id"));
         passengerName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("first_name"));

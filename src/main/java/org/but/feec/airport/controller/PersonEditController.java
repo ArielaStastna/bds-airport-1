@@ -57,6 +57,7 @@ public class PersonEditController {
         validation.registerValidator(passportTextField, Validator.createEmptyValidator("Cell passport number must not be empty."));
         validation.registerValidator(residenceTextField, Validator.createEmptyValidator("Cell country of residence must not be empty."));
         validation.registerValidator(idTextField, Validator.createEmptyValidator("Cell id must not be empty."));
+        idTextField.setEditable(false);
 
         editButton.disableProperty().bind(validation.invalidProperty());
 
@@ -82,7 +83,7 @@ public class PersonEditController {
     }
 
     @FXML
-    public void handleEditPersonButton(ActionEvent event) {
+    public void handleEditButton(ActionEvent event) {
         String passport_number = passportTextField.getText();
         String last_name = surnameTextField.getText();
         String first_name = nameTextField.getText();
