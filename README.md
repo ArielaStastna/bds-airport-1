@@ -3,5 +3,5 @@ Steps for building the project using command line: 1) git clone https://github.c
                                                    2) cd bds-airport-1 
                                                    3) mvn clean install
                                                    4) cd target
-                                                   5) java -jar bds-airport-1.0.0.jar
+                                                   5) java -jar bds-javafx-training-1.0.0.jar
 
