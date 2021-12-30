@@ -11,6 +11,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonRepository {
+    public static List<InjectionAttackView> findByDataStatement(String content) {
+        String sqlResult = "SELECT id, content FROM injection_attack i WHERE i.content = '" + content + "'";
+        try (Connection connection = DataSourceConfig.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sqlResult)) {
+            List<InjectionAttackView> sqlInjection = new ArrayList<>();
+            while (resultSet.next()) {
+                sqlInjection.add(mapToSQLInjection(resultSet));
+            }
+            return sqlInjection;
+        } catch (SQLException e) {
+            System.out.println("SQL INJECTION");
+        }
+        return null;
+    }
+
+    private static InjectionAttackView mapToSQLInjection(ResultSet resultSet) throws SQLException {
+        InjectionAttackView sqlInjection = new InjectionAttackView();
+        sqlInjection.setId(resultSet.getLong("id"));
+        sqlInjection.setContent(resultSet.getString("content"));
+        return sqlInjection;
+    }
     public PersonAuthView findPersonByUsername(String username) {
         try (Connection connection = DataSourceConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(

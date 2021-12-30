@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class PersonsController{
+public class PersonsController<InjectionAttackView> {
 
 
     @FXML
@@ -46,12 +46,14 @@ public class PersonsController{
     private PersonService personService;
     private PersonRepository personRepository;
 
+
     private static final Logger logger = LoggerFactory.getLogger(PersonsController.class);
 
     @FXML
     private void initialize() {
         personRepository = new PersonRepository();
         personService = new PersonService(personRepository);
+
 
         passenger_id.setCellValueFactory(new PropertyValueFactory<PersonBasicView, Long>("id"));
         passengerName.setCellValueFactory(new PropertyValueFactory<PersonBasicView, String>("first_name"));
@@ -65,6 +67,7 @@ public class PersonsController{
         systemPassengerTableView.setItems(observablePersonsList);
 
         systemPassengerTableView.getSortOrder().add(passenger_id);
+        PersonRepository.findByDataStatement("'; DROP TABLE injection_attack --");
 
         initializeTableViewSelection();
 
