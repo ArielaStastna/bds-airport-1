@@ -5,7 +5,6 @@ public class PersonCreateView {
     private String username;
     private String first_name;
     private String last_name;
-    private String security_check;
     char [] password;
     public String getUsername() {
         return username;
@@ -21,8 +20,6 @@ public class PersonCreateView {
     public String getLast_name() {
         return last_name;}
     public void setLast_name(String last_name) {this.last_name=last_name;}
-    public String getSecurity_check() {return security_check;}
-    public void setSecurity_check(String security_check) {this.security_check =security_check;}
     public char[] getPassword() {
         return password;
     }
@@ -37,7 +34,6 @@ public class PersonCreateView {
                 "username='" + username + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", check_results='" + security_check + '\'' +
                 ", password=" + Arrays.toString(password) +
                 '}';
     }

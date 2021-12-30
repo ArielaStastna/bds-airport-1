@@ -34,9 +34,6 @@ public class PersonCreateController {
     private TextField newSurname;
 
     @FXML
-    private TextField newCheck;
-
-    @FXML
     private TextField newPassword;
 
     private PersonService personService;
@@ -52,7 +49,6 @@ public class PersonCreateController {
         validation.registerValidator(newUsername, Validator.createEmptyValidator("Cell username must not be empty."));
         validation.registerValidator(newName, Validator.createEmptyValidator("Cell name must not be empty."));
         validation.registerValidator(newSurname, Validator.createEmptyValidator("Cell surname must not be empty."));
-        validation.registerValidator(newCheck, Validator.createEmptyValidator("Cell security check results must not be empty."));
         validation.registerValidator(newPassword, Validator.createEmptyValidator("Cell password must not be empty."));
 
         createButton.disableProperty().bind(validation.invalidProperty());
@@ -65,7 +61,6 @@ public class PersonCreateController {
         String password = newPassword.getText();
         String first_name = newName.getText();
         String last_name = newSurname.getText();
-        String security_check = newCheck.getText();
         String username = newUsername.getText();
 
 
@@ -73,7 +68,6 @@ public class PersonCreateController {
         personCreateView.setPassword(password.toCharArray());
         personCreateView.setFirst_name(first_name);
         personCreateView.setLast_name(last_name);
-        personCreateView.setSecurity_check(security_check);
         personCreateView.setUsername(username);
 
 
